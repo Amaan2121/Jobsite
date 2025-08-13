@@ -65,7 +65,7 @@ Preferred communication style: Simple, everyday language.
 - **Database Driver**: @neondatabase/serverless for optimized serverless database connections
 
 ## AI Services
-- **OpenAI API**: GPT-4o model for natural language processing, resume analysis, and content generation
+- **OpenAI API**: GPT-4o model for natural language processing, resume analysis, and content generation (Needs to be updated to GPT 5 Mini)
 - **AI Capabilities**: Text analysis, content generation, job matching algorithms, and ATS optimization
 
 ## UI Component Library
