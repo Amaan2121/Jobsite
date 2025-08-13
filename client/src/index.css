@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(248 50% 98%);
+  --foreground: hsl(213 40% 14%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(213 40% 14%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(213 40% 14%);
+  --primary: hsl(219 79% 58%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(158 64% 40%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --accent: hsl(354 84% 57%);
+  --accent-foreground: hsl(0 0% 100%);
+  --muted: hsl(210 5% 93%);
+  --muted-foreground: hsl(215 16% 46%);
+  --border: hsl(217 33% 89%);
+  --input: hsl(214 32% 91%);
+  --ring: hsl(219 79% 58%);
+  --destructive: hsl(354 84% 57%);
+  --destructive-foreground: hsl(0 0% 100%);
+  --chart-1: hsl(219 79% 58%);
+  --chart-2: hsl(158 64% 40%);
+  --chart-3: hsl(354 84% 57%);
+  --chart-4: hsl(42 96% 61%);
+  --chart-5: hsl(276 100% 62%);
+  --sidebar: hsl(210 5% 93%);
+  --sidebar-foreground: hsl(213 40% 14%);
+  --sidebar-primary: hsl(219 79% 58%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(217 33% 89%);
+  --sidebar-accent-foreground: hsl(219 79% 58%);
+  --sidebar-border: hsl(217 33% 89%);
+  --sidebar-ring: hsl(219 79% 58%);
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.75rem;
+  
+  /* KareerAI specific colors */
+  --neutral-50: hsl(210 10% 97%);
+  --neutral-100: hsl(220 14% 96%);
+  --neutral-200: hsl(220 13% 91%);
+  --neutral-600: hsl(215 16% 46%);
+  --neutral-800: hsl(213 40% 14%);
+}
+
+.dark {
+  --background: hsl(213 40% 14%);
+  --foreground: hsl(210 10% 97%);
+  --card: hsl(220 13% 18%);
+  --card-foreground: hsl(210 10% 97%);
+  --popover: hsl(220 13% 18%);
+  --popover-foreground: hsl(210 10% 97%);
+  --primary: hsl(219 79% 58%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(158 64% 40%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --accent: hsl(354 84% 57%);
+  --accent-foreground: hsl(0 0% 100%);
+  --muted: hsl(215 28% 17%);
+  --muted-foreground: hsl(217 10% 64%);
+  --border: hsl(215 28% 17%);
+  --input: hsl(215 28% 17%);
+  --ring: hsl(219 79% 58%);
+  --destructive: hsl(354 84% 57%);
+  --destructive-foreground: hsl(0 0% 100%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Custom utility classes for KareerAI */
+@layer utilities {
+  .text-neutral-50 {
+    color: var(--neutral-50);
+  }
+  .text-neutral-100 {
+    color: var(--neutral-100);
+  }
+  .text-neutral-200 {
+    color: var(--neutral-200);
+  }
+  .text-neutral-600 {
+    color: var(--neutral-600);
+  }
+  .text-neutral-800 {
+    color: var(--neutral-800);
+  }
+  
+  .bg-neutral-50 {
+    background-color: var(--neutral-50);
+  }
+  .bg-neutral-100 {
+    background-color: var(--neutral-100);
+  }
+  .bg-neutral-200 {
+    background-color: var(--neutral-200);
+  }
+  .bg-neutral-600 {
+    background-color: var(--neutral-600);
+  }
+  .bg-neutral-800 {
+    background-color: var(--neutral-800);
+  }
+  
+  .border-neutral-200 {
+    border-color: var(--neutral-200);
+  }
+  .border-neutral-300 {
+    border-color: hsl(220 13% 87%);
+  }
+  
+  .hover\:bg-neutral-50:hover {
+    background-color: var(--neutral-50);
+  }
+}
