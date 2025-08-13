@@ -1,0 +1,24 @@
+Business Plan: AI-Powered Job Site for Pakistan
+1. Executive Summary
+This document outlines the business plan for a next-generation, AI-powered job site tailored for the Pakistani market. Our platform will differentiate itself by offering a suite of advanced AI tools for both job seekers and employers, aiming to become the leading job portal in the country. We will provide a superior user experience, highly accurate job matching, and innovative features that address the current gaps in the market.
+2. Mission Statement
+To revolutionize the recruitment landscape in Pakistan by leveraging artificial intelligence to connect the right talent with the right opportunities, fostering career growth and organizational success.
+3. Core Features (Competitive Parity)
+To compete with established players like Rozee.pk, Mustakbil.com, and Indeed Pakistan, our platform will include the following standard features:
+Comprehensive Job Listings: Aggregating jobs from all major industries and career levels.
+Advanced Search and Filtering: Allowing users to search by keyword, location, industry, salary, experience level, and other criteria.
+Company Profiles: Detailed profiles of employers, including company culture, benefits, and employee reviews.
+User Profiles and Resume Upload: Standard user accounts where candidates can upload and manage their resumes.
+Job Alerts: Email and push notifications for new jobs that match a user's saved searches and profile.
+Application Tracking: A dashboard for both candidates and employers to track the status of applications.
+4. AI-Powered Features for Candidates
+This is where our platform will truly shine. We will offer a suite of AI tools to empower job seekers:
+AI Resume and Cover Letter Editor:
+One-Time Upload: Candidates can upload their CV, cover letters, and other relevant documents, which will be securely stored on their profile.
+AI-Powered Suggestions: Our AI will analyze the uploaded documents and provide suggestions for improvement, focusing on clarity, impact, and keyword optimization.
+Cover Letter Generation: The AI will craft tailored cover letters for specific job applications, using the candidate's information and the job description to create a compelling narrative.
+LaTeX/Canvas Editor: A user-friendly, in-browser editor with professional templates will allow both AI-driven and manual edits to CVs and cover letters. This ensures perfect formatting and a polished final product. Like Overleaf.
+Multiple Export Options: Users can save their documents as PDFs or other common file formats.
+ATS Score Checker: After editing, the platform will provide an Applicant Tracking System (ATS) score for the CV, with further suggestions for improvement to ensure it passes through automated screening processes.
+Intelligent Autofill: Our AI will intelligently pre-fill job applications on our site using the candidate's stored information, saving time and reducing friction in the application process.
+AI Chatbot Assistant: A 24/7 chatbot will guide candidates through the job search and application process, answer their questions, and provide personalized job recommendations.
