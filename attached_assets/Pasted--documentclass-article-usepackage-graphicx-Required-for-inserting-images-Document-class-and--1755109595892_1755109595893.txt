@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=0.75in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+
+% Begin document
+\begin{document}
+
+% Disable page numbers
+\pagestyle{empty}
+
+% Header
+\begin{center}
+\textbf{\Large AMAAN SAIGOL}\\[2pt] % Name
+amaansaigol@hotmail.com | +44 7515499020 | \href{https://www.linkedin.com/in/amaan-saigol-35a6441b3/}{linkedin.com/amaansaigol}
+\end{center}
+
+
+% Education Section
+\section*{EDUCATION}
+\noindent
+\textbf{University of Edinburgh}, Edinburgh, UK \hfill Sept 2020 | July 2024\\ % University name and location
+Business with Decision Analytics, MA (Hons), Upper Second-Class Honours (2:1)  % Degree and GPA
+\begin{itemize}
+    \item Relevant Modules: \textit{Decision Analysis, Accountancy 1A, Management Science and Operation Analytics, Economics, and Mathematical Programming in Advanced Analytics}
+\end{itemize}
+\textbf{The Lyceum}, Karachi, Pakistan \hfill Aug 2018 | May 2020
+\begin{itemize}
+\item A-levels: AAB (Mathematics, Economics, Psychology)
+\end{itemize}
+
+% Experience Section
+\section*{EXPERIENCE}
+
+\noindent
+\textbf{Artificial Intelligence Automation Agency} \hfill Karachi, Pakistan\\ % Company name and location
+\textit{Founder}
+\hfill Sept 2024 | Current % Position and duration
+\begin{itemize}
+    \item Developed an automated tax-filing platform for lower-income Pakistani residents through an interactive interface.
+    \item Currently developing an AI-based application to assist students with A-level exam preparation.
+    \end{itemize}
+    
+
+\noindent
+\textbf{Idenfo} \hfill United Kingdom\\ % Company name and location
+\textit{Client Solutions Intern}
+\textit{} \hfill July 2024 | Aug 2024 % Position and duration
+\begin{itemize}
+    \item Delivered product demonstrations to prospective clients.
+    \item Monitored marketing and sales trends to promote the company’s AML/KYC solutions. 
+% Job responsibilities and achievements
+\end{itemize}
+
+\noindent
+\textbf{Standard Chartered Bank} \hfill Karachi, Pakistan\\ % Company name and location
+\textit{Summer Rotational Intern}
+\textit{} \hfill Jun 2023 | Aug 2023 % Position and duration
+\begin{itemize}
+    \item Aided the Affluent Department in finding three new priority clients generating around PKR 300,000 a year for the bank. 
+    \item Analysed customer data to identify a number of clients eligible for priority credit cards but were not utilizing this service and helped orchestrate a campaign to target these clients.
+% Job responsibilities and achievements
+\end{itemize}
+
+\noindent
+\textbf{Adamjee Durabuilt} \hfill Karachi, Pakistan\\ % Company name and location
+\textit{Supply Chain and Logistics Intern}
+\hfill June 2022 | Aug 2022 % Position and duration
+\begin{itemize}
+    \item Developed a modern inventory system to automate the process of tracking inventory levels which led to a 2\% reduction in lead time.
+    \item Utilized advanced tracking systems to monitor raw material shipments and employed several cost-cutting techniques to reduce transportation costs by 3\%.
+    \end{itemize}
+
+\noindent
+
+\section*{POSITIONS OF LEADERSHIP}
+\textbf{Edinburgh University Trading and Investment Club (EUTIC)}
+\hfill Sep 2021 | Aug 2023 % Position and duration
+\begin{itemize}
+    \item Facilitated virtual trading competitions for university students and helped the marketing team secure sponsorships.
+
+\end{itemize}
+\textbf{Prefect, The Lyceum School}
+\hfill Sep 2019 | June 2020 % Position and duration
+\begin{itemize}
+    \item Presented myself as a positive role model for other pupils by establishing and upholding a high standard of behaviour and appearance. 
+    \item Undertook various roles and responsibilities around the school guided by the administration.
+\end{itemize}
+
+\section*{CERTIFICATIONS}
+\begin{itemize}
+    \item \textbf{Online Certificates:} \textit{ Big Data Fundamentals, Data Literacy for Business Professionals, Data Analytics Essentials, and Advanced Excel techniques} (issued by \textbf{Skillsoft Percipio})
+    \item \textbf{Awards:} \textit{University of Edinburgh Business School: Edinburgh Award} for Professional Development (2022)
+    \end{itemize}
+
+\section*{SKILLS}
+\begin{itemize}
+    \item \textbf{Data Analysis and Interpretation} Advanced Microsoft Excel, SPSS, Python, SQL
+    \end{itemize}
+
+\end{document}

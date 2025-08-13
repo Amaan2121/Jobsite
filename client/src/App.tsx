@@ -7,6 +7,7 @@ import Home from "@/pages/home";
 import Jobs from "@/pages/jobs";
 import Companies from "@/pages/companies";
 import Profile from "@/pages/profile";
+import LaTeXEditor from "@/pages/latex-editor";
 import Login from "@/pages/auth/login";
 import Register from "@/pages/auth/register";
 import NotFound from "@/pages/not-found";
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/jobs" component={Jobs} />
       <Route path="/companies" component={Companies} />
       <Route path="/profile" component={Profile} />
+      <Route path="/latex-editor" component={LaTeXEditor} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route component={NotFound} />

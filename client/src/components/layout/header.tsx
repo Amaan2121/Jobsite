@@ -68,6 +68,7 @@ export default function Header() {
             <nav className="hidden md:ml-8 md:flex md:space-x-8">
               <NavLink href="/jobs">Find Jobs</NavLink>
               <NavLink href="/companies">Companies</NavLink>
+              <NavLink href="/latex-editor">Resume Editor</NavLink>
               <NavLink href="/#ai-tools">AI Tools</NavLink>
               <NavLink href="/#salary-guide">Salary Guide</NavLink>
             </nav>
@@ -122,6 +123,7 @@ export default function Header() {
                 <div className="flex flex-col space-y-4 mt-6">
                   <NavLink href="/jobs" mobile>Find Jobs</NavLink>
                   <NavLink href="/companies" mobile>Companies</NavLink>
+                  <NavLink href="/latex-editor" mobile>Resume Editor</NavLink>
                   <NavLink href="/#ai-tools" mobile>AI Tools</NavLink>
                   <NavLink href="/#salary-guide" mobile>Salary Guide</NavLink>
                   

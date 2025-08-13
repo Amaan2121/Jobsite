@@ -108,6 +108,18 @@ export const savedJobs = pgTable("saved_jobs", {
   savedAt: timestamp("saved_at").defaultNow(),
 });
 
+// LaTeX Resume Templates table
+export const latexResumeTemplates = pgTable("latex_resume_templates", {
+  id: uuid("id").primaryKey().default(sql`gen_random_uuid()`),
+  userId: uuid("user_id").references(() => users.id).notNull(),
+  name: text("name").notNull(),
+  resumeData: jsonb("resume_data").notNull(),
+  latexContent: text("latex_content").notNull(),
+  isDefault: boolean("is_default").default(false),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 // Relations
 export const usersRelations = relations(users, ({ many, one }) => ({
   applications: many(jobApplications),
@@ -170,6 +182,13 @@ export const resumeAnalysesRelations = relations(resumeAnalyses, ({ one }) => ({
   }),
 }));
 
+export const latexResumeTemplatesRelations = relations(latexResumeTemplates, ({ one }) => ({
+  user: one(users, {
+    fields: [latexResumeTemplates.userId],
+    references: [users.id],
+  }),
+}));
+
 // Insert schemas
 export const insertUserSchema = createInsertSchema(users).omit({
   id: true,
@@ -205,6 +224,12 @@ export const insertSavedJobSchema = createInsertSchema(savedJobs).omit({
   savedAt: true,
 });
 
+export const insertLatexResumeTemplateSchema = createInsertSchema(latexResumeTemplates).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 // Types
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -218,6 +243,8 @@ export type ResumeAnalysis = typeof resumeAnalyses.$inferSelect;
 export type InsertResumeAnalysis = z.infer<typeof insertResumeAnalysisSchema>;
 export type SavedJob = typeof savedJobs.$inferSelect;
 export type InsertSavedJob = z.infer<typeof insertSavedJobSchema>;
+export type LatexResumeTemplate = typeof latexResumeTemplates.$inferSelect;
+export type InsertLatexResumeTemplate = z.infer<typeof insertLatexResumeTemplateSchema>;
 
 // Auth schemas
 export const loginSchema = z.object({

@@ -1,4 +1,4 @@
-import { users, companies, jobs, jobApplications, resumeAnalyses, savedJobs, type User, type InsertUser, type Company, type InsertCompany, type Job, type InsertJob, type JobApplication, type InsertJobApplication, type ResumeAnalysis, type InsertResumeAnalysis, type SavedJob, type InsertSavedJob } from "@shared/schema";
+import { users, companies, jobs, jobApplications, resumeAnalyses, savedJobs, latexResumeTemplates, type User, type InsertUser, type Company, type InsertCompany, type Job, type InsertJob, type JobApplication, type InsertJobApplication, type ResumeAnalysis, type InsertResumeAnalysis, type SavedJob, type InsertSavedJob, type LatexResumeTemplate, type InsertLatexResumeTemplate } from "@shared/schema";
 import { db } from "./db";
 import { eq, and, desc, asc, ilike, sql, inArray } from "drizzle-orm";
 
@@ -52,6 +52,13 @@ export interface IStorage {
   // Search methods
   searchJobs(query: string, limit?: number): Promise<(Job & { company: Company })[]>;
   getJobStats(): Promise<{ totalJobs: number; totalCompanies: number; totalCandidates: number }>;
+
+  // LaTeX Resume Template methods
+  getLatexResumeTemplate(id: string): Promise<LatexResumeTemplate | undefined>;
+  getLatexResumeTemplatesByUser(userId: string): Promise<LatexResumeTemplate[]>;
+  createLatexResumeTemplate(template: InsertLatexResumeTemplate): Promise<LatexResumeTemplate>;
+  updateLatexResumeTemplate(id: string, updates: Partial<InsertLatexResumeTemplate>): Promise<LatexResumeTemplate | undefined>;
+  deleteLatexResumeTemplate(id: string): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -324,6 +331,31 @@ export class DatabaseStorage implements IStorage {
       totalCompanies: companyCount.count,
       totalCandidates: candidateCount.count
     };
+  }
+
+  async getLatexResumeTemplate(id: string): Promise<LatexResumeTemplate | undefined> {
+    const [template] = await db.select().from(latexResumeTemplates).where(eq(latexResumeTemplates.id, id));
+    return template || undefined;
+  }
+
+  async getLatexResumeTemplatesByUser(userId: string): Promise<LatexResumeTemplate[]> {
+    return await db.select().from(latexResumeTemplates).where(eq(latexResumeTemplates.userId, userId)).orderBy(desc(latexResumeTemplates.updatedAt));
+  }
+
+  async createLatexResumeTemplate(insertTemplate: InsertLatexResumeTemplate): Promise<LatexResumeTemplate> {
+    const [template] = await db.insert(latexResumeTemplates).values(insertTemplate as any).returning();
+    return template;
+  }
+
+  async updateLatexResumeTemplate(id: string, updates: Partial<InsertLatexResumeTemplate>): Promise<LatexResumeTemplate | undefined> {
+    const updateData = { ...updates, updatedAt: new Date() };
+    const [template] = await db.update(latexResumeTemplates).set(updateData as any).where(eq(latexResumeTemplates.id, id)).returning();
+    return template || undefined;
+  }
+
+  async deleteLatexResumeTemplate(id: string): Promise<boolean> {
+    const result = await db.delete(latexResumeTemplates).where(eq(latexResumeTemplates.id, id));
+    return (result.rowCount || 0) > 0;
   }
 }
 

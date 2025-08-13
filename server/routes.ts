@@ -1,8 +1,8 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { analyzeResume, calculateJobMatch, generateCoverLetter } from "./services/ai";
-import { loginSchema, registerSchema, insertJobSchema, insertJobApplicationSchema, insertResumeAnalysisSchema } from "@shared/schema";
+import { analyzeResume, calculateJobMatch, generateCoverLetter, generateLatexResume, enhanceResumeWithAI, generateLatexCoverLetter, type LaTeXResumeData } from "./services/ai";
+import { loginSchema, registerSchema, insertJobSchema, insertJobApplicationSchema, insertResumeAnalysisSchema, insertLatexResumeTemplateSchema } from "@shared/schema";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import multer from "multer";
@@ -402,6 +402,124 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json({ coverLetter });
     } catch (error: any) {
       res.status(500).json({ message: error.message || 'Failed to generate cover letter' });
+    }
+  });
+
+  // LaTeX Resume Templates routes
+  app.get('/api/latex-templates', authenticateToken, async (req: any, res) => {
+    try {
+      const templates = await storage.getLatexResumeTemplatesByUser(req.user.id);
+      res.json({ templates });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to fetch templates' });
+    }
+  });
+
+  app.get('/api/latex-templates/:id', authenticateToken, async (req: any, res) => {
+    try {
+      const template = await storage.getLatexResumeTemplate(req.params.id);
+      if (!template) {
+        return res.status(404).json({ message: 'Template not found' });
+      }
+      res.json({ template });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to fetch template' });
+    }
+  });
+
+  app.post('/api/latex-templates', authenticateToken, async (req: any, res) => {
+    try {
+      const validatedData = insertLatexResumeTemplateSchema.parse({
+        ...req.body,
+        userId: req.user.id
+      });
+
+      const template = await storage.createLatexResumeTemplate(validatedData);
+      res.status(201).json({ template });
+    } catch (error: any) {
+      res.status(400).json({ message: error.message || 'Failed to create template' });
+    }
+  });
+
+  app.put('/api/latex-templates/:id', authenticateToken, async (req: any, res) => {
+    try {
+      const template = await storage.updateLatexResumeTemplate(req.params.id, req.body);
+      if (!template) {
+        return res.status(404).json({ message: 'Template not found' });
+      }
+      res.json({ template });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to update template' });
+    }
+  });
+
+  app.delete('/api/latex-templates/:id', authenticateToken, async (req: any, res) => {
+    try {
+      const success = await storage.deleteLatexResumeTemplate(req.params.id);
+      if (!success) {
+        return res.status(404).json({ message: 'Template not found' });
+      }
+      res.json({ message: 'Template deleted successfully' });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to delete template' });
+    }
+  });
+
+  app.post('/api/latex-templates/generate', authenticateToken, async (req: any, res) => {
+    try {
+      const { resumeData }: { resumeData: LaTeXResumeData } = req.body;
+      
+      if (!resumeData) {
+        return res.status(400).json({ message: 'Resume data is required' });
+      }
+
+      const latexContent = generateLatexResume(resumeData);
+      
+      res.json({ latexContent });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to generate LaTeX resume' });
+    }
+  });
+
+  app.post('/api/latex-templates/enhance', authenticateToken, async (req: any, res) => {
+    try {
+      const { resumeData, targetJobTitle }: { resumeData: LaTeXResumeData; targetJobTitle?: string } = req.body;
+      
+      if (!resumeData) {
+        return res.status(400).json({ message: 'Resume data is required' });
+      }
+
+      const enhancedData = await enhanceResumeWithAI(resumeData, targetJobTitle);
+      
+      res.json({ enhancedData });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to enhance resume' });
+    }
+  });
+
+  app.post('/api/latex-templates/cover-letter', authenticateToken, async (req: any, res) => {
+    try {
+      const { resumeData, jobId }: { resumeData: LaTeXResumeData; jobId: string } = req.body;
+      
+      if (!resumeData || !jobId) {
+        return res.status(400).json({ message: 'Resume data and job ID are required' });
+      }
+
+      const job = await storage.getJob(jobId);
+      if (!job) {
+        return res.status(404).json({ message: 'Job not found' });
+      }
+
+      const latexCoverLetter = await generateLatexCoverLetter(
+        resumeData,
+        job.description,
+        job.title,
+        job.company.name
+      );
+      
+      res.json({ latexCoverLetter });
+    } catch (error: any) {
+      res.status(500).json({ message: error.message || 'Failed to generate LaTeX cover letter' });
     }
   });
 

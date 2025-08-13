@@ -7,7 +7,7 @@ import ResumeUpload from "@/components/resume/resume-upload";
 import UserDashboard from "@/components/dashboard/user-dashboard";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Code, TrendingUp, Database, Building, Heart, ShoppingCart } from "lucide-react";
+import { Code, TrendingUp, Database, Building, Heart, ShoppingCart, FileText } from "lucide-react";
 
 export default function Home() {
   const { data: featuredJobs, isLoading: jobsLoading } = useQuery({
@@ -95,7 +95,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow" data-testid="feature-resume-optimizer">
               <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
                 <Code className="text-2xl text-primary" />
@@ -121,6 +121,15 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-4">24/7 Career Assistant</h3>
               <p className="text-neutral-600 mb-6">Chat with our AI assistant for career advice, interview tips, and personalized job recommendations.</p>
               <button className="text-accent font-medium hover:underline" data-testid="button-chat-now">Chat Now →</button>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow" data-testid="feature-latex-editor">
+              <div className="w-12 h-12 bg-green-500 bg-opacity-10 rounded-lg flex items-center justify-center mb-6">
+                <FileText className="text-2xl text-green-500" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">LaTeX Resume Editor</h3>
+              <p className="text-neutral-600 mb-6">Professional resume creation with LaTeX formatting and AI enhancement features for perfect presentations.</p>
+              <a href="/latex-editor" className="text-green-500 font-medium hover:underline" data-testid="button-latex-editor">Create Resume →</a>
             </div>
           </div>
         </div>
